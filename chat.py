@@ -15,6 +15,9 @@ class Chat:
 
     def faireDodo(self):
         return self.__str__() + " et souvent je dors"
+    
+    def direBonjour(sef):
+        print(f"Coucou frère")
 
 
 # Main 
@@ -24,3 +27,5 @@ print(chat_titi.fairePipi())
 
 chat_gros_minet = Chat('gros_minet', 15)
 print(chat_gros_minet.faireDodo())
+
+chat_gros_minet.direBonjour()
