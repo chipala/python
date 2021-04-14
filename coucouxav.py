@@ -4,11 +4,17 @@ mon_message = "Bravo !!" # variable globale !!
 print(f"{mon_message}") # f-string, permet d'afficher la valeur d'une variable grace aux {} == exemple ==> {<ma_variable>}
 
 class RappelClass: # nom de la classe, ou symbole, ou type
+        
     def __init__(self, arg1, arg2): # constructeur de la classe, c'est comme cela qu'on créé des objets
                                     # classe == la recette
                                     # object == le gâteau que l'on fait grace à la recette :-)
         self.arg1 = arg1 # self.arg1 est une propriété de la classe, on copie la valeur de arg1
         self.arg2 = arg2
+        RappelClass.nb_instances += 1
+        print(f"{RappelClass.nb_instances} est le nomdre d'objets créés")
+
+    def __str__(self):
+        return f"arg1:{self.arg1}, arg2:{self.arg2}"
         
     
     def une_method(self, arg1): # on parle de méthode (faut voir ça comme des fonctions mais pour les objets :-)
@@ -21,6 +27,7 @@ class RappelClass: # nom de la classe, ou symbole, ou type
         print("c'est rigolo")
 
     variable_de_classe = "C'est rigolo les classes :-)"
+    nb_instances = 0
 
 # Utilisation de la classe : RappelClass
 mon_objet = RappelClass("mon_arg1", "mon_arg2") # création d'un objet identifié par la variable mon_objet
@@ -34,3 +41,6 @@ print(mon_objet.arg2)
 
 mon_objet.une_method("coucou") # appel à la méthode nommée une_method!!
 mon_objet.une_fonction("le lundi, le mardi...") # appel à la méthode une_fonction
+
+print(RappelClass("arg11", "arg12"))
+print(RappelClass("arg21", "arg22"))
