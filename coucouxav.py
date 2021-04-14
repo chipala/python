@@ -44,3 +44,5 @@ mon_objet.une_fonction("le lundi, le mardi...") # appel à la méthode une_fonct
 
 print(RappelClass("arg11", "arg12"))
 print(RappelClass("arg21", "arg22"))
+
+print("Lis le magazine que je t'ai prêté :-)")
