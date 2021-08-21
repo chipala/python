@@ -11,7 +11,7 @@ class RappelClass: # nom de la classe, ou symbole, ou type
         self.arg1 = arg1 # self.arg1 est une propriété de la classe, on copie la valeur de arg1
         self.arg2 = arg2
         RappelClass.nb_instances += 1
-        print(f"{RappelClass.nb_instances} est le nomdre d'objets créés")
+        print(f"{RappelClass.nb_instances} est le nombre d'objets créés")
 
     def __str__(self):
         return f"arg1:{self.arg1}, arg2:{self.arg2}"

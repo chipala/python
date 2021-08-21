@@ -210,7 +210,7 @@ while to<nt:
         rd1=input("Relancer de 1 (o/n)")
 
         if rd1=="o" and cj=="a":
-            a=randint(1,7)
+            a=randint(1,6)
         
         if rd1=="o" and cj!="a":
             a=randint(1,6)
@@ -219,7 +219,7 @@ while to<nt:
         rd1=input("Relancer de 2 (o/n)")
 
         if rd1=="o" and cj=="a":
-            b=randint(1,7)
+            b=randint(1,6)
         
         if rd1=="o" and cj!="a":
             b=randint(1,6)
@@ -228,7 +228,7 @@ while to<nt:
         rd1=input("Relancer de 3 (o/n)")
 
         if rd1=="o" and cj=="a":
-            c=randint(1,7)
+            c=randint(1,6)
         
         if rd1=="o" and cj!="a":
             c=randint(1,6)
