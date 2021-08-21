@@ -35,9 +35,4 @@ if __name__ == "__main__":
     board.addElement(4, 1, z)
     board.addElement(2, 3, e)
     board.draw()
-<<<<<<< HEAD
 
-    print("https://meet.jit.si/python")
-    
-=======
->>>>>>> db96e9638c7a6ebbd60deb0c15ab697730d29ef2
