@@ -1,5 +1,23 @@
 from random import randint
 
+def lancer_de():
+    l = []
+    for de in list(range(6)):
+        l.append(randint(1,6))
+    return l
+
+def relancer_de(lance):
+    for de in list(range(6)):
+        r1=input(f"Relancer dé {de+1} (o/n)")    
+        if r1=="o":
+            lance[de]=randint(1,6)
+
+def affiche_des(lance):
+    print()    
+    print(lance)
+    print()
+
+
 pts1=0
 pts2=0
 
@@ -18,52 +36,22 @@ while tour<nt:
     print("Joueur 1")
     print()
 
-    a=randint(1,6)
-    b=randint(1,6)
-    c=randint(1,6)
-    d=randint(1,6)
-    e=randint(1,6)
-    f=randint(1,6)
-
     print()    
-    print (a,b,c,d,e,f)
+    lance = lancer_de()
+    print(lance)
     print()
 
     t=0
 
     while t<2:
-
         t=t+1
 
-        r1=input("Relancer de 1 (o/n)")
-        r2=input("Relancer de 2 (o/n)")
-        r3=input("Relancer de 3 (o/n)")
-        r4=input("Relancer de 4 (o/n)")
-        r5=input("Relancer de 5 (o/n)")
-        r6=input("Relancer de 6 (o/n)")
-
-        if r1=="o":
-            a=randint(1,6)
-
-        if r2=="o":
-            b=randint(1,6)
-
-        if r3=="o":
-            c=randint(1,6)
-
-        if r4=="o":
-            d=randint(1,6)
-
-        if r5=="o":
-            e=randint(1,6)
-
-        if r6=="o":
-            f=randint(1,6)
-
-        print()    
-        print (a,b,c,d,e,f)
-        print()
-
+        # relancer les dés
+        relancer_de(lance)
+        
+        # afficher les dés
+        affiche_des(lance)
+        
     if liste1[0]==1:
         print("1:  Total 1")
     if liste1[1]==2:
