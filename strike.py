@@ -107,7 +107,7 @@ def affiche_joueur(joueur):
     nom = joueur["nom"]
     points = joueur["points"]
 
-    print("{} {} pts".format(nom, points))
+    print("{} à {} pts".format(nom, points))
 
 
 # Points
@@ -136,7 +136,7 @@ def calcule_point(selection, des):
     """
     # Total des 1 (ou 2, ou 3, ...)
     if selection in list(range(1, 7)):
-        pts = des.count(selection)
+        pts = selection * des.count(selection)
     elif selection == 9:
         pts = 15
     elif selection in [10, 11, 12]:
@@ -199,12 +199,13 @@ def moteur_jeu(nb_tours, lst_joueur):
     """ bouble principale du jeu """
     # Boucle sur les tours
     for tour in list(range(nb_tours)):
-        cls_ecran()
-        print("~~~~~~~~~~~~~~~~~")
-        print("Tour {}".format(tour + 1))
 
         # Boucle sur les joueurs
         for joueur in lst_joueur:
+            cls_ecran()
+            print("~~~~~~~~~~~~~~~~~")
+            print("Tour {}".format(tour + 1))
+
             print("~~~~~~~~~~~~~~~~~")
             print("{} à toi de jouer !!\n".format(joueur["nom"]))
 
@@ -243,8 +244,10 @@ def moteur_jeu(nb_tours, lst_joueur):
 
     # fin de boucle
     lst_gagnants = determine_gagnant(lst_joueur)
+    cls_ecran()
     print("~~~~~~~~~~~~~~~~~")
     print("Podium !!")
+    print("")
     affiche_podium(lst_gagnants)
 
 
