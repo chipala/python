@@ -1,263 +1,288 @@
 from random import randint
+import os
 
-def lancer_de():
-    l = []
-    for de in list(range(6)):
-        l.append(randint(1,6))
-    return l
+# Regle
+g_regle_item = [
+    "Total 1",
+    "Total 2",
+    "Total 3",
+    "Total 4",
+    "Total 5",
+    "Total 6",
+    "Brelan",
+    "Carré",
+    "Full 15",
+    "Triple paire 25",
+    "Double brelan 25",
+    "Carré/Paire 25",
+    "Petite suite 20",
+    "Suite ordonée 30",
+    "Suite moyenne 40",
+    "Grande suite 60",
+    "Yathzee 50",
+    "Strike 100",
+    "Chance",
+]
 
-def relancer_de(lance):
-    for de in list(range(6)):
-        r1=input(f"Relancer dé {de+1} (o/n)")    
-        if r1=="o":
-            lance[de]=randint(1,6)
+# Utilitaire
+def cls_ecran():
+    """ CLS l'écran """
+    if os.name == "posix":
+        os.system("clear")
+    else:
+        os.system("cls")
 
-def affiche_des(lance):
-    print()    
-    print(lance)
+
+# Des
+def lance_des_initial():
+    """ créé un lancé de 6 dés """
+    return [randint(1, 6) for val in list(range(6))]
+
+
+def lance_des(des):
+    """ lance tous les dés """
+    for de in des:
+        de = randint(1, 6)
+    return des
+
+
+def lance_des_inter(des):
+    """ selection des dés à lancer """
+    lst_des = des.copy()
+    for index in list(range(6)):
+        rep = input("De [" + str(index + 1) + "]:")
+        if rep in ["o", "O", "ok", "OK"]:
+            lance_de(lst_des, index)
+    return lst_des
+
+
+def lance_de(des, numero_de):
+    """ lance le dé numéro numero_de """
+    # le dé numéro 1 est à l'indice 0
+    des[numero_de] = randint(1, 6)
+
+
+def affiche_de(valeur):
+    """ affiche la valeur du de """
+    print(" [{}]".format(valeur), end="")
+
+
+def affiche_des(des):
+    """ affiche tous les dés """
+    for de in des:
+        print("  . ", end="")
     print()
-
-
-pts1=0
-pts2=0
-
-nt=int(input("Nombre de tours:"))
-
-tour=0
-
-liste1=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
-liste2=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
-
-while tour<nt:
-
-    tour=tour+1
-
+    for de in des:
+        affiche_de(de)
     print()
-    print("Joueur 1")
-    print()
-
-    print()    
-    lance = lancer_de()
-    print(lance)
-    print()
-
-    t=0
-
-    while t<2:
-        t=t+1
-
-        # relancer les dés
-        relancer_de(lance)
-        
-        # afficher les dés
-        affiche_des(lance)
-        
-    if liste1[0]==1:
-        print("1:  Total 1")
-    if liste1[1]==2:
-        print("2:  Total 2")
-    if liste1[2]==3:
-        print("3:  Total 3")
-    if liste1[3]==4:
-        print("4:  Total 4")
-    if liste1[4]==5:
-        print("5:  Total 5")
-    if liste1[5]==6:
-        print("6:  Total 6")
-    if liste1[6]==7:
-        print("7:  Brelan")
-    if liste1[7]==8:
-        print("8:  carré")
-    if liste1[8]==9:
-        print("9:  Full 15")
-    if liste1[9]==10:
-        print("10: Triple paire 25")
-    if liste1[10]==11:
-        print("11: Double brelan 25")
-    if liste1[11]==12:
-        print("12: Carré/Paire 25")
-    if liste1[12]==13:
-        print("13: Petite suite 20")
-    if liste1[13]==14:
-        print("14: Suite ordonée 30")
-
-    if liste1[14]==15:
-        print("15: Suite moyenne 40")
-    if liste1[15]==16:
-        print("16: Grande suite 60")
-    if liste1[16]==17:
-        print("17: Yathzee 50")
-    if liste1[17]==18:
-        print("18: Strike 100")
-    if liste1[18]==19:
-        print("19: Chance")
-
-    ch=0
-    while ch==0 or liste1[ch-1]==0:
-
-        ch=input("Votre choix:")
-        ch=int(ch)
-    
-    liste1[ch-1]=0
-
-    
-
-    
-    print()
-    
-    pt=input("Points:")
-    
-    
-    if ch==19:
-        pt=a+b+c+d+e+f
-    
-    if ch==10 or ch==11 or ch==12:
-        pt=25
-
-    if ch==13:
-        pt=20
+    for de in des:
+        print(" '-'", end="")
+    print("")
 
 
-    pt=int(pt)
-
-    pts1=pts1+pt
-
-    print("Vous avez ",pts1," points")
-    print()
-    print("Joueur 1:",pts1," points")
-    print("Joueur 2:",pts2," points")
-
-    print()
-    print("Joueur 2")
-    print()
-    
-    a=randint(1,6)
-    b=randint(1,6)
-    c=randint(1,6)
-    d=randint(1,6)
-    e=randint(1,6)
-    f=randint(1,6)
-
-    print()    
-    print (a,b,c,d,e,f)
-    print()
-
-    t=0
-
-    while t<2:
-
-        t=t+1
-
-        r1=input("Relancer de 1 (o/n)")
-        r2=input("Relancer de 2 (o/n)")
-        r3=input("Relancer de 3 (o/n)")
-        r4=input("Relancer de 4 (o/n)")
-        r5=input("Relancer de 5 (o/n)")
-        r6=input("Relancer de 6 (o/n)")
-
-        if r1=="o":
-            a=randint(1,6)
-
-        if r2=="o":
-            b=randint(1,6)
-
-        if r3=="o":
-            c=randint(1,6)
-
-        if r4=="o":
-            d=randint(1,6)
-
-        if r5=="o":
-            e=randint(1,6)
-
-        if r6=="o":
-            f=randint(1,6)
-
-        print()    
-        print (a,b,c,d,e,f)
-        print()
-
-    if liste2[0]==1:
-        print("1:  Total 1")
-    if liste2[1]==2:
-        print("2:  Total 2")
-    if liste2[2]==3:
-        print("3:  Total 3")
-    if liste2[3]==4:
-        print("4:  Total 4")
-    if liste2[4]==5:
-        print("5:  Total 5")
-    if liste2[5]==6:
-        print("6:  Total 6")
-    if liste2[6]==7:
-        print("7:  Brelan")
-    if liste2[7]==8:
-        print("8:  carré")
-    if liste2[8]==9:
-        print("9:  Full 15")
-    if liste2[9]==10:
-        print("10: Triple paire 25")
-    if liste2[10]==11:
-        print("11: Double brelan 25")
-    if liste2[11]==12:
-        print("12: Carré/Paire 25")
-    if liste2[12]==13:
-        print("13: Petite suite 20")
-    if liste2[13]==14:
-        print("14: Suite ordonée 30")
-
-    if liste2[14]==15:
-        print("15: Suite moyenne 40")
-    if liste2[15]==16:
-        print("16: Grande suite 60")
-    if liste2[16]==17:
-        print("17: Yathzee 50")
-    if liste2[17]==18:
-        print("18: Strike 100")
-    if liste2[18]==19:
-        print("19: Chance")
+def affiche_lance_des(des, des_nouv):
+    """affiche le lancé : des
+    et le lancé : des_nouv
+    """
+    affiche_des(des)
+    for step in des:
+        print("  v ", end="")
+    print("")
+    affiche_des(des_nouv)
 
 
-    ch=0
-    while ch==0 or liste2[ch-1]==0:
-
-        ch=input("Votre choix:")
-        ch=int(ch)
-    
-    liste2[ch-1]=0
-
-    
-
-    
-    print()
-    
-    pt=input("Points:")
-    
-   
-
-   
-
-    if ch==19:
-        pt=a+b+c+d+e+f
+# Joueurs
+def cree_joueur(pseudo):
+    """ créé un joueur """
+    return {"nom": pseudo, "points": 0}
 
 
-    if ch==10 or ch==11 or ch==12:
-        pt=25
-
-    if ch==13:
-        pt=20
-        
-    pt=int(pt)
-
-    pts2=pts2+pt
-
-    print("Vous avez ",pts2," points")
-    print()
-    print("Joueur 1:",pts1," points")
-    print("Joueur 2:",pts2," points")
+def maj_point(joueur, point):
+    """ Mise à jour des points du joueur """
+    joueur["points"] += point
 
 
+def affiche_joueur(joueur):
+    """ affiche un joueur """
+    nom = joueur["nom"]
+    points = joueur["points"]
+
+    print("{} {} pts".format(nom, points))
 
 
-print()
-print("Fin")
+# Points
+def affiche_regle():
+    """ affiche toutes les sélections possibles """
+    index = 1
+    for regle in g_regle_item:
+        print("|{:2}|{:<21}|".format(index, regle))
+        index += 1
+
+
+def verifie_selection_regle(selection):
+    """ Vérifie si selection est bien une valeur permise """
+    if selection == None:
+        return False
+
+    if selection.isnumeric():
+        return (int(selection) > 0) and (int(selection) <= len(g_regle_item))
+
+    return False
+
+
+def calcule_point(selection, des):
+    """calcule les points d'une sélection dans
+    la table des sélections, soit la régle
+    """
+    # Total des 1 (ou 2, ou 3, ...)
+    if selection in list(range(1, 7)):
+        pts = des.count(selection)
+    elif selection == 9:
+        pts = 15
+    elif selection in [10, 11, 12]:
+        pts = 25
+    elif selection == 13:
+        pts = 20
+    elif selection == 14:
+        pts = 30
+    elif selection == 15:
+        pts = 40
+    elif selection == 16:
+        pts = 60
+    elif selection == 17:
+        pts = 50
+    elif selection == 18:
+        pts = 100
+    elif selection == 19:
+        pts = randint(0, 100)
+    else:
+        pts = 10  # points par défaut...
+
+    print("{:<3}|pts {:<3}|{}".format(selection, pts, g_regle_item[selection - 1]))
+
+    return pts
+
+
+# Jeu
+def quitter_erreur(msg):
+    """ quitte sur une erreur et affiche le message msg """
+    if msg != "":
+        print(msg)
+    exit(1)
+
+
+def quitter(rep):
+    """ quitter le jeu """
+    if rep in ["o", "O", "oui", "OUI", "OK", "ok"]:
+        print("A bientôt !!")
+        exit(0)
+
+
+def determine_gagnant(lst_joueur):
+    """ renvoie une liste triée par ordre des points décroissants """
+    return sorted(lst_joueur, key=lambda joueur: joueur["points"], reverse=True)
+
+
+def affiche_podium(lst_gagnants):
+    """ affiche tous les joueurs par ordre décroissant des points """
+    position = 1
+    for joueur in lst_gagnants:
+        print(
+            "- {:<2} | {:<20} | pts : {}".format(
+                position, joueur["nom"], joueur["points"]
+            )
+        )
+        position += 1
+
+
+def moteur_jeu(nb_tours, lst_joueur):
+    """ bouble principale du jeu """
+    # Boucle sur les tours
+    for tour in list(range(nb_tours)):
+        cls_ecran()
+        print("~~~~~~~~~~~~~~~~~")
+        print("Tour {}".format(tour + 1))
+
+        # Boucle sur les joueurs
+        for joueur in lst_joueur:
+            print("~~~~~~~~~~~~~~~~~")
+            print("{} à toi de jouer !!\n".format(joueur["nom"]))
+
+            print("~~~~~~~~~~~~~~~~~")
+            affiche_regle()
+
+            print("~~~~~~~~~~~~~~~~~")
+            print("Lancé des dés")
+            des = lance_des_initial()  # création des dés
+            affiche_des(des)
+
+            print("~~~~~~~~~~~~~~~~~")
+            print("Relance des dés ? [o/n]")
+            des_rel = lance_des_inter(des)
+            affiche_lance_des(des, des_rel)
+
+            print("~~~~~~~~~~~~~~~~~")
+            print("Rappel des points")
+            affiche_joueur(joueur)
+
+            print("~~~~~~~~~~~~~~~~~")
+            rep = input("Sélection de la combinaison:")
+            rep_parsee = verifie_selection_regle(rep)
+
+            if rep_parsee:
+                pts = calcule_point(int(rep), des_rel)
+                maj_point(joueur, pts)
+            else:
+                print("Sélection inconnue... aucun point en plus !!!")
+
+            affiche_joueur(joueur)
+
+            print("~~~~~~~~~~~~~~~~~")
+            rep = input("Quitter le jeu ? [o/n]:")
+            quitter(rep)
+
+    # fin de boucle
+    lst_gagnants = determine_gagnant(lst_joueur)
+    print("~~~~~~~~~~~~~~~~~")
+    print("Podium !!")
+    affiche_podium(lst_gagnants)
+
+
+def jouer():
+    """ configure les principales variables pour la boucle de jeu """
+    # Nombre de joueurs
+    str_nb_joueur = input("Nombre de joueurs:")
+
+    if not str_nb_joueur.isnumeric():
+        quitter_erreur("Format de la saisie incorrect")
+
+    nb_joueur = int(str_nb_joueur)
+
+    if nb_joueur <= 0:
+        quitter_erreur("Nombre de joueurs est insuffisant")
+
+    # Création liste des joueurs
+    lst_joueur = []
+    for joueur in list(range(nb_joueur)):
+        pseudo = input("Pseudo:")
+        lst_joueur.append(cree_joueur(pseudo))
+
+    print("")
+
+    # Nombre de tours
+    nb_tours = int(input("Nombre de tours:"))
+
+    # Boucle du jeu
+    moteur_jeu(nb_tours, lst_joueur)
+
+
+if __name__ == "__main__":
+    print("----------------------")
+    print("Bienvenue au Strike !!")
+    print("----------------------")
+
+    print("")
+
+    jouer()
+
+    print("A bientôt pour une autre partie !!")
