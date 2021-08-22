@@ -13,6 +13,7 @@ liste_messages_ok = [
     "Ca progresse",
 ]
 
+
 liste_mots = [
     "craies",
     "dakota",
@@ -48,8 +49,8 @@ liste_mots = [
     "confort",
     "tendre",
     "chaussettes"
-
 ]
+
 
 def choisir_msg(liste_msg):
     return liste_msg[randint(0, len(liste_msg)-1)]
@@ -60,12 +61,11 @@ def choisir_mot_alea():
     return liste_mots[index]
 
 
-
-
-
 mot_a_deviner = choisir_mot_alea()
 
+
 i = 0
+
 
 def affiche_mot(mot, liste_lettre):
     list_mot = list(mot)
@@ -110,3 +110,4 @@ while (i < max_essais):
   #  if (input("voulez-vous quitter ? [o/O]").lower() == "o"):
        # break
 print ("Il fallait trouver:",mot_a_deviner)
+
